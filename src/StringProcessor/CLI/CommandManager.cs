@@ -7,6 +7,7 @@ public sealed class CommandManager
 {
     private readonly IList<ICommand> _commands;
     public IReadOnlyList<ICommand> Commands => new ReadOnlyCollection<ICommand>(_commands);
+
     public CommandManager()
     {
         var commandTypes = this.GetType().Assembly.GetTypes()
@@ -18,7 +19,7 @@ public sealed class CommandManager
     public void Run()
     {
         Console.WriteLine("Please enter a string to process:");
-        var input = Console.ReadLine();
+        var input = Console.ReadLine() ?? string.Empty;
         foreach (var command in _commands)
         {
             command.Run(input);

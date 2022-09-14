@@ -9,6 +9,7 @@ public sealed class ExportCsv : ICommand
     public int Order => 3;
     private readonly IConsoleOutput _consoleOutput;
     private readonly ICsvOutput _csvOutput;
+
     public ExportCsv(IConsoleOutput consoleOutput, ICsvOutput csvOutput)
     {
         _consoleOutput = consoleOutput;

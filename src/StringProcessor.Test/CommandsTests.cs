@@ -43,9 +43,9 @@ public class CommandsTests
     }
 
     [Theory]
-    [InlineData("hello world", new string[]{"h","e","l","l","o"," ","w","o","r","l","d"})]
-    [InlineData("hElLo wOrLd", new []{"h","e","l","l","o"," ","w","o","r","l","d"})]
-    [InlineData("HELLO WORLD", new []{"h","e","l","l","o"," ","w","o","r","l","d"})]
+    [InlineData("hello world", new string[] { "h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d" })]
+    [InlineData("hElLo wOrLd", new[] { "h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d" })]
+    [InlineData("HELLO WORLD", new[] { "h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d" })]
     [InlineData("", new string[0])]
     [InlineData(null, new string[0])]
     public void CreateCsvTest(string input, string[] data)
@@ -55,8 +55,8 @@ public class CommandsTests
 
         var command = new Commands.ExportCsv(mockConsoleOutput.Object, mockCsvOutput.Object);
         command.Run(input);
-        
+
         mockConsoleOutput.Verify(t => t.Print("CSV created!"), Times.Once);
-        mockCsvOutput.Verify(t=>t.WriteToCsv(It.Is<IEnumerable<string>>(p=>p.SequenceEqual(data))));
+        mockCsvOutput.Verify(t => t.WriteToCsv(It.Is<IEnumerable<string>>(p => p.SequenceEqual(data))));
     }
 }
