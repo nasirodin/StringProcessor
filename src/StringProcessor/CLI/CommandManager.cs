@@ -13,7 +13,10 @@ public sealed class CommandManager
         var commandTypes = this.GetType().Assembly.GetTypes()
             .Where(t => typeof(ICommand).IsAssignableFrom(t) && t.IsInterface == false)
             .ToList();
-        _commands = commandTypes.Select(t => Activator.CreateInstance(t)).Cast<ICommand>().ToList();
+        _commands = commandTypes.Select(t => Activator.CreateInstance(t))
+            .Cast<ICommand>()
+            .OrderBy(c=>c.Order)
+            .ToList();
     }
 
     public void Run()
