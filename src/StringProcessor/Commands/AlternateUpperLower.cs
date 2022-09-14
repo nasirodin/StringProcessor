@@ -6,7 +6,8 @@ public sealed class AlternateUpperLower : ICommand
 {
     public string Description => "Converts the string to alternate upper and lower case and outputs it to stdout.";
     public string Title => "Alternate upper and lower";
-
+    public int Order => 2;
+    
     private readonly IConsoleOutput _consoleOutput;
 
     public AlternateUpperLower(IConsoleOutput consoleOutput)

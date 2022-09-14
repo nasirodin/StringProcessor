@@ -6,7 +6,7 @@ public sealed class ConvertToUpperCase : ICommand
 {
     public string Description => "Converts the string to uppercase and outputs it to stdout.";
     public string Title => "Converts to Uppercase";
-
+    public int Order => 1;
     private readonly IConsoleOutput _consoleOutput;
 
     public ConvertToUpperCase(IConsoleOutput consoleOutput)
